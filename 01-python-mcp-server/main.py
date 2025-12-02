@@ -2,16 +2,23 @@
 FastMCP quickstart example.
 """
 
+from typing import Any
+
+
 from mcp.server.fastmcp import FastMCP
 
 # Create an MCP server
-mcp = FastMCP("Demo", json_response=True)
+mcp = FastMCP[Any]("Demo", json_response=True)
 
 # Add an addition tool
 @mcp.tool()
 def add(a: int, b: int) -> int:
     """Add two numbers"""
     return a + b
+
+# Create a tool that add event in google calender 
+# Get all events of the month with resource
+#  
 
 # Add a dynamic greeting resource
 @mcp.resource("greeting://{name}")

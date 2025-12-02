@@ -38,6 +38,53 @@ Your job as a developer is to **build the MCP server**.
 
 ---
 
+## Transport layer
+
+The transport layer manages communication channels and authentication between clients and servers. It handles connection establishment, message framing, and secure communication between MCP participants.
+
+ * **MCP supports two transport mechanisms:**
+    1. Stdio transport: Uses standard input/output streams for direct process communication between local processes on the same machine, providing optimal performance with no network overhead.
+    2. Streamable HTTP transport: Uses HTTP POST for client-to-server messages with optional Server-Sent Events for streaming capabilities. This transport enables remote server communication and supports standard HTTP authentication methods including bearer tokens, API keys, and custom headers. MCP recommends using OAuth to obtain authentication tokens.
+
+---
+
+
+## Primitives
+
+MCP primitives are the most important concept within MCP. They define what clients and servers can offer each other. These primitives specify the types of contextual information that can be shared with AI applications and the range of actions that can be performed.
+
+ * **MCP defines three core primitives that servers can expose:**
+    1. Tools: Executable functions that AI applications can invoke to perform actions (e.g., file operations, API calls, database queries)
+    2. Resources: Data sources that provide contextual information to AI applications (e.g., file contents, database records, API responses)
+    3. Prompts: Reusable templates that help structure interactions with language models (e.g., system prompts, few-shot examples)
+
+ * **MCP also defines primitives that clients can expose. These primitives allow MCP server authors to build richer interactions.**
+    1. Sampling: Allows servers to request language model completions from the client’s AI application. This is useful when servers’ authors want access to a language model, but want to stay model independent and not include a language model SDK in their MCP server. They can use the sampling/complete method to request a language model completion from the client’s AI application.
+    2. Elicitation: Allows servers to request additional information from users. This is useful when servers’ authors want to get more information from the user, or ask for confirmation of an action. They can use the elicitation/request method to request additional information from the user.
+    3. Logging: Enables servers to send log messages to clients for debugging and monitoring purposes.
+---
+
+## Understanding MCP servers
+
+
+MCP servers are programs that expose specific capabilities to AI applications through standardized protocol interfaces.
+Common examples include file system servers for document access, database servers for data queries, GitHub servers for code management, Slack servers for team communication, and calendar servers for scheduling.
+
+
+
+---
+
+## Google Calender
+ 
+Create a Python command-line application that makes requests to the Google Calendar API.
+In the Google Cloud console, enable the Google Calendar API.
+
+ * [Python quickstart](https://developers.google.com/workspace/calendar/api/quickstart/python)
+ * [Service account](https://docs.cloud.google.com/iam/docs/service-account-overview)
+ * [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2/)
+
+---
+
 # 📦 Project Setup (Using uv)
 
 ### 1️⃣ Install uv
