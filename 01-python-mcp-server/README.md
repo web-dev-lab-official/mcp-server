@@ -179,3 +179,5 @@ uv sync
 * 📝 **Written Guide:** [https://blog.webdevlab.org](https://blog.webdevlab.org)
 * 💻 **Source Code:** [https://github.com/web-dev-lab-official/mcp-server](https://github.com/web-dev-lab-official/mcp-server)
 
+
+No cred
